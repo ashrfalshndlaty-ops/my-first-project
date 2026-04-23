@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل بيانات الطلاب</title>
+    <link rel="stylesheet " href="student.css">
+</head>
+<body>
+<div id="app">
+  <h2>تسجيل بيانات الطلاب</h2>
+
+  <input v-model="name" placeholder="اسم الطالب">
+  <input v-model="age" type="number" placeholder="السن">
+  <input v-model="grade" placeholder="فرقه">
+
+  <button @click="addStudent">إضافة</button>
+
+  <table border="1">
+    <tr>
+      <th>#</th>
+      <th>الاسم</th>
+      <th>السن</th>
+      <th>الصف</th>
+      <th>حذف</th>
+    </tr>
+
+    <tr v-for="(student, index) in students" :key="index">
+      <td>{{ index + 1 }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.grade }}</td>
+      <td>
+        <button @click="deleteStudent(index)">❌</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="student.js"></script>
+</body>
+</html>
